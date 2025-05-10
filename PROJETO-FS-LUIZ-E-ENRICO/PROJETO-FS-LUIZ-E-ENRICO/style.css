@@ -1,0 +1,80 @@
+body {
+    margin: 0;
+}
+
+img {
+    width: 100%;
+}
+
+h3 {
+    text-align: right;
+    display: flex;
+    margin-top: 163px;
+    justify-content: right;
+    margin-right: 275px;
+}
+
+#canvas {
+    background-color: black;
+    width: 750px;
+    height: 750px;
+    border: 1px solid;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#canvas div {
+    width: 50px;
+    height: 50px;
+    position: relative;
+}
+
+.tanque {
+    background-image: url("WhatsApp Image 2025-05-09 at 20.06.40.jpeg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 20px;
+    height: 20px;
+    position: absolute;
+}
+
+.ovnis {
+    background-image: url('WhatsApp Image 2025-05-09 at 20.03.02 (2).jpeg');
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.lazer::after {
+    content: "";
+    width: 5px;
+    height: 30px;
+    border-radius: 5px;
+    background-color: fuchsia;
+    position: absolute;
+    left: 50%;
+    top: -30px; /* Ajuste para fazer o laser sair de cima do tanque */
+    transform: translateX(-50%); /* Ajuste para centralizar o laser */
+}
+
+.explosion {
+    background: url('OIP-removebg-preview.png') no-repeat;
+    background-size: contain;
+}
+#resultado {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.85);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+#img-resultado {
+  max-width: 400px;
+  max-height: 400px;
+}
