@@ -83,18 +83,18 @@ function moverovni() {
     });
 
 if (ovnis[ovnis.length - 1] > quadrados.length - medida) {
-    mostrarImagemFinal('img-resultado'); // Substitua pelo caminho da sua imagem
+    mostrarImagemFinal('gameover.jpg'); // Caminho da sua imagem
     clearInterval(ovnisid);
 }
 
 if (quadrados[posicao_do_tanque].classList.contains('ovnis')) {
     quadrados[posicao_do_tanque].classList.add('explosion');
-    mostrarImagemFinal("gameover.png");
+    mostrarImagemFinal('gameover.jpg');
     clearInterval(ovnisid);
 }
 
 if (ovnis.length === 0) {
-    mostrarImagemFinal("youwin.png");
+    mostrarImagemFinal('youwin.jpg'); // Imagem de vitória
     clearInterval(ovnisid);
 }
 
@@ -103,6 +103,10 @@ function mostrarImagemFinal(caminho) {
     const img = document.getElementById("img-resultado");
     img.src = caminho;
     div.style.display = "flex";
+
+    setTimeout(() => {
+        location.reload();
+    }, 3000); // 3 segundos
 }
 
 }

@@ -1,9 +1,6 @@
 body {
     margin: 0;
-}
-
-img {
-    width: 100%;
+    
 }
 
 h3 {
@@ -11,10 +8,10 @@ h3 {
     display: flex;
     margin-top: 163px;
     justify-content: right;
-    margin-right: 275px;
+    margin-right: 300px;
 }
 
-#canvas {
+#canvas { 
     background-color: black;
     width: 750px;
     height: 750px;
@@ -53,7 +50,7 @@ h3 {
     background-color: fuchsia;
     position: absolute;
     left: 50%;
-    top: -30px; /* Ajuste para fazer o laser sair de cima do tanque */
+    top: -10px; /* Ajuste para fazer o laser sair de cima do tanque */
     transform: translateX(-50%); /* Ajuste para centralizar o laser */
 }
 
