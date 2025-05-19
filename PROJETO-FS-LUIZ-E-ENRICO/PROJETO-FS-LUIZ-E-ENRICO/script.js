@@ -24,7 +24,7 @@ let posicao_do_tanque = 202;
 let medida = 15;
 // Direção inicial dos OVNIs (1 = direita, -1 = esquerda)
 let direcao = 1;
-// Flag para saber se os OVNIs devem descer
+// Flag para os OVNIs devem descerem
 let descer = true;
 // ID do intervalo dos OVNIs (para parar depois)
 let ovnisid;
@@ -34,7 +34,7 @@ let pontos = 0;
 // Adiciona a classe "tanque" ao quadrado onde o tanque está
 quadrados[posicao_do_tanque].classList.add("tanque");
 
-// Corrigido: adiciona a classe "ovnis" para todos os OVNIs no início do jogo
+//adiciona a classe "ovnis" para todos os OVNIs no início do jogo
 ovnis.forEach(ovni => {
     quadrados[ovni].classList.add("ovnis");
 });
@@ -154,7 +154,7 @@ function raio_lazer(e) {
         // Adiciona a classe "lazer" na nova posição
         quadrados[posicaolazer].classList.add('lazer');
 
-        // Se acertou um OVNI
+        // Se acertou um OVNI - (Usamos o auxilio da Inteligência artificial a partir daqui)
         if (quadrados[posicaolazer].classList.contains("ovnis")) {
             quadrados[posicaolazer].classList.remove('lazer');
             quadrados[posicaolazer].classList.remove('ovnis');
@@ -167,7 +167,7 @@ function raio_lazer(e) {
 
             clearInterval(lazerid);
 
-            // Remove o OVNI atingido da lista de OVNIs
+            // Remove o OVNI atingido da lista - (Terminamos de usar o auxilio da Inteligência artificial aqui)
             const index = ovnis.indexOf(posicaolazer);
             if (index !== -1) {
                 ovnis.splice(index, 1);
