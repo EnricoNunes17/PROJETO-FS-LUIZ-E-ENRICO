@@ -41,21 +41,21 @@ ovnis.forEach(ovni => {
 
 // Adiciona eventos de teclado para mover o tanque e disparar o laser
 document.addEventListener("keydown", movertanque);
-ovnisid = setInterval(moverovni, 300); // Move os OVNIs a cada 300ms
+ovnisid = setInterval(moverovni, 300); // Move os Ovnis a cada 300ms
 document.addEventListener("keydown", raio_lazer); // Dispara o laser ao pressionar espaço
 
 // Função para mover o tanque para esquerda/direita
-function movertanque(e) {
+function movertanque(evento) {
     // Remove a classe "tanque" da posição atual
     quadrados[posicao_do_tanque].classList.remove("tanque");
 
     // Se seta esquerda e não está na borda esquerda, move para a esquerda
-    if (e.keyCode === 37) {
+    if (evento.keyCode === 37) {
         if (posicao_do_tanque % medida !== 0) {
             posicao_do_tanque--;
         }
     // Se seta direita e não está na borda direita, move para a direita
-    } else if (e.keyCode === 39) {
+    } else if (evento.keyCode === 39) {
         if (posicao_do_tanque % medida !== medida - 1) {
             posicao_do_tanque++;
         }
@@ -65,18 +65,18 @@ function movertanque(e) {
     quadrados[posicao_do_tanque].classList.add("tanque");
 }
 
-// Função para mover os OVNIs
+//  mover os ovnis
 function moverovni() {
-    // Checa se algum OVNI está na borda esquerda ou direita
+    // Checa se algum ovni está na borda esquerda ou direita
     const ladoEsquerdo = ovnis[0] % medida === 0;
     const ladoDireito = ovnis[ovnis.length - 1] % medida === medida - 1;
 
-    // Remove a classe "ovnis" de todos os quadrados atuais dos OVNIs
+    // Remove a classe "ovnis" de todos os quadrados 
     ovnis.forEach(i => {
         quadrados[i].classList.remove("ovnis");
     });
 
-    // Se chegou na borda, muda a direção e faz os OVNIs descerem
+    // Se chegou na borda, muda a direção e faz os ovni descerem
     if (ladoEsquerdo && direcao === -1) {
         direcao = 1;
         descer = true;
@@ -85,7 +85,7 @@ function moverovni() {
         descer = true;
     }
 
-    // Move cada OVNI para a próxima posição (horizontal ou descendo)
+    // Move cada ovni para a próxima posição (horizontal ou descendo)
     for (let i = 0; i < ovnis.length; i++) {
         ovnis[i] += descer ? medida : direcao;
     }
@@ -96,20 +96,20 @@ function moverovni() {
         quadrados[i].classList.add("ovnis");
     });
 
-    // Se algum OVNI chegou na última linha, mostra imagem de game over e para o jogo
+    // Se algum ovini chegou na última linha, mostra imagem de game over e para o jogo
     if (ovnis[ovnis.length - 1] > quadrados.length - medida) {
         mostrarImagemFinal('gameover.jpg');
         clearInterval(ovnisid);
     }
 
-    // Se um OVNI colidiu com o tanque, mostra explosão e game over
+    // Se um ovni colidiu com o tanque, mostra explosão e game over
     if (quadrados[posicao_do_tanque].classList.contains('ovnis')) {
         quadrados[posicao_do_tanque].classList.add('explosion');
         mostrarImagemFinal('gameover.jpg');
         clearInterval(ovnisid);
     }
 
-    // Se todos os OVNIs foram destruídos, mostra imagem de vitória
+    // Se todos os ovni foram destruídos, mostra imagem de vitória
     if (ovnis.length === 0) {
         mostrarImagemFinal('youwin.jpg');
         clearInterval(ovnisid);
@@ -129,12 +129,12 @@ function moverovni() {
 }
 
 // Função para disparar o laser
-function raio_lazer(e) {
+function raio_lazer(evento) {
     let lazerid;
     let posicaolazer = posicao_do_tanque;
 
     // Se pressionou espaço (código 32), dispara o laser
-    if (e.keyCode === 32) {
+    if (evento.keyCode === 32) {
         lazerid = setInterval(moverlazer, 100);
     }
 
